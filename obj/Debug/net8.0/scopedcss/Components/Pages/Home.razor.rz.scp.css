@@ -1,0 +1,109 @@
+.header[b-47gte20qou] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title[b-47gte20qou] {
+    width: 80%;
+    background-color: #474747;
+    /* Cor de fundo */
+    color: white;
+    /* Cor do texto */
+    padding: 10px;
+    /* Espaçamento interno */
+    margin: 20px;
+    border-radius: 5px;
+    /* Borda arredondada */
+    text-align: center;
+}
+
+.card-title[b-47gte20qou] {
+    text-transform: capitalize;
+}
+
+.cards-list[b-47gte20qou] {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.card-group[b-47gte20qou] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 350px;
+}
+
+.card-item[b-47gte20qou] {
+    font-size: 13px;
+    padding: 15px 15px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-height: 350px;
+    font-weight: bold;
+    border: 7px solid black;
+    border-radius: 7px;
+}
+
+.card-header[b-47gte20qou] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.margin-h[b-47gte20qou] {
+    margin: 0 5px;
+}
+
+.mana-group[b-47gte20qou] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mana-cost[b-47gte20qou] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10px;
+    height: 10px;
+    padding: 10px;
+}
+
+.card-image[b-47gte20qou] {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.card-description[b-47gte20qou] {
+    height: 125px;
+}
+
+.card-description[b-47gte20qou]::first-letter {
+    text-transform: uppercase;
+}
+
+.card-stats[b-47gte20qou] {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    transform: translate(10%, 150%);
+}
+
+.card-stats span[b-47gte20qou] {
+    text-align: center;
+    background-color: #A6A6A6;
+    padding: 3px;
+    width: 70%;
+}

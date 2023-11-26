@@ -1,0 +1,101 @@
+﻿@rendermode InteractiveServer
+@inject CardService service
+@inject DialogService dialog
+@inject NavigationManager nav
+
+<link rel="stylesheet" href="css/dialog.css">
+
+<div class="dialog">
+    <div class="content">
+        <span @onclick="OnCancel">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-x-lg text-end" viewBox="0 0 16 16">
+                <path
+                    d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+            </svg>
+        </span>
+        <h3 class="mb-4">Criar nova categoria</h3>
+        <EditForm Model="Model" OnValidSubmit="SubmitAsync">
+            <DataAnnotationsValidator />
+            <div class="form">
+                <div class="mb-3">
+                    <label class="form-label">Título</label>
+                    <InputText @bind-Value="@Model.Title" class="form-control" />
+                    <span class="text-danger">
+                        <ValidationMessage For="@(() => Model.Title)" />
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Descrição</label>
+                    <InputText @bind-Value="@Model.Description" class="form-control" />
+                    <span class="text-danger">
+                        <ValidationMessage For="@(() => Model.Description)" />
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Tipo</label>
+                    <InputSelect @bind-Value="@Model.Type" class="form-select">
+                        <option value="@ETypes.Fire">Fogo</option>
+                        <option value="@ETypes.Water">Água</option>
+                        <option value="@ETypes.Earth">Terra</option>
+                        <option value="@ETypes.Wind">Vento</option>
+                        <option value="@ETypes.Light">Luz</option>
+                        <option value="@ETypes.Darkness">Trevas</option>
+                    </InputSelect>
+                    <span class="text-danger">
+                        <ValidationMessage For="@(() => Model.ManaCost)" />
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Custo de Mana</label>
+                    <InputNumber @bind-Value="@Model.ManaCost" class="form-control" />
+                    <span class="text-danger">
+                        <ValidationMessage For="@(() => Model.ManaCost)" />
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Ataque</label>
+                    <InputNumber @bind-Value="@Model.Attack" class="form-control" />
+                    <span class="text-danger">
+                        <ValidationMessage For="@(() => Model.Attack)" />
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Defesa</label>
+                    <InputNumber @bind-Value="@Model.Defense" class="form-control" />
+                    <span class="text-danger">
+                        <ValidationMessage For="@(() => Model.Defense)" />
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Vida</label>
+                    <InputNumber @bind-Value="@Model.Health" class="form-control" />
+                    <span class="text-danger">
+                        <ValidationMessage For="@(() => Model.Health)" />
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Link Da Imagem</label>
+                    <InputText @bind-Value="@Model.ImageUrl" class="form-control" />
+                    <span class="text-danger">
+                        <ValidationMessage For="@(() => Model.ImageUrl)" />
+                    </span>
+                </div>
+            </div>
+            <div class="text-end">
+                <button type="submit" class="btn btn-primary">Criar</button>
+                <button @onclick="OnCancel" class="btn btn-secondary">Cancelar</button>
+            </div>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    [Parameter] public EventCallback OnCancel { get; set; }
+    public Card Model { get; set; } = new();
+    private async Task SubmitAsync()
+    {
+        await service.CreateAsync(Model);
+        dialog.CloseDialog();
+    }
+}

@@ -1,0 +1,101 @@
+﻿@page "/"
+@rendermode InteractiveServer
+@inject CardService service
+@inject DialogService dialog
+
+<PageTitle>Página Inicial</PageTitle>
+
+<div class="header">
+    <h1 class="title">Listagem de Cartas</h1>
+    <button @onclick="@(() => dialog.ShowDialogAsync(EDialogType.Criar))" class="btn btn-primary">Criar carta</button>
+</div>
+<section>
+    @if (Cards.Count() == 0)
+    {
+        <h2 class="text-center mt-3">Nenhuma carta foi encontrada</h2>
+    }
+    else
+    {
+        <div class="cards-list">
+            @foreach (var card in Cards)
+            {
+                var color = "";
+                var imageUrl = @card.ImageUrl;
+                switch (card.Type)
+                {
+                    case ETypes.Fire:
+                        color = "/images/fire-pattern.png";
+                        break;
+                    case ETypes.Water:
+                        color = "/images/water-pattern.png";
+                        break;
+                    case ETypes.Earth:
+                        color = "/images/earth-pattern.png";
+                        break;
+                    case ETypes.Wind:
+                        color = "/images/wind-pattern.png";
+                        break;
+                    case ETypes.Darkness:
+                        color = "/images/darkness-pattern.png";
+                        break;
+                    case ETypes.Light:
+                        color = "/images/light-pattern.png";
+                        break;
+                }
+                <div class="card-group">
+                    <div class="card-item m-3" style="background-image: url(@color)">
+                        <div class="card-header text-dark border border-dark rounded-top p-1 bg-body-secondary">
+                            <span class="margin-h card-title">@card.Title</span>
+                            <div class="mana-group margin-h">
+                                <span>🌀</span>
+                                <span
+                                    class="mana-cost text-center bg-light border border-dark rounded-circle">@card.ManaCost</span>
+                            </div>
+                        </div>
+                        <div class="card-image border border-dark" style="background-image: url('@imageUrl');"></div>
+                        <div class="card-description border border-dark rounded-bottom bg-light p-2">
+                            <p>@card.Description</p>
+                            <div class="card-stats">
+                                <span class="border border-dark bg-body-secondary p-1">
+                                    ⚔️ @card.Attack / 🛡️ @card.Defense / ❤️ @card.Health
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-3 border border-secondary rounded bg-secondary-subtle">
+                        <button @onclick="@(() => dialog.ShowDialogAsync(EDialogType.Editar, @card.Id))"
+                            class="btn btn-primary">Editar</button>
+                        <button @onclick="@(() => dialog.ShowDialogAsync(EDialogType.Excluir, @card.Id))"
+                            class="btn btn-danger">Excluir</button>
+                    </div>
+                </div>
+            }
+            </div>
+    }
+</section>
+
+@if (dialog.ShowingDialog)
+{
+    switch (dialog.Type)
+    {
+        case EDialogType.Criar:
+            <CreateDialog OnCancel="dialog.CloseDialog" />
+            break;
+        case EDialogType.Editar:
+            <EditDialog Id="dialog.Card.Id" OnCancel="dialog.CloseDialog" />
+            break;
+        case EDialogType.Excluir:
+            <DeleteDialog Id="dialog.Card.Id" OnCancel="dialog.CloseDialog" />
+            break;
+    }
+
+}
+
+@code {
+    private List<Card> Cards { get; set; } = new();
+    private EDialogType DialogType { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        Cards = await service.GetAllAsync();
+    }
+}
