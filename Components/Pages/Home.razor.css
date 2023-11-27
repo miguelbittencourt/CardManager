@@ -1,11 +1,8 @@
-body.modal-open {
-    overflow: hidden;
-}
-
 .header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .title {
@@ -14,14 +11,10 @@ body.modal-open {
     color: white;
     padding: 20px;
     margin: 20px auto;
-    /* Centraliza o título horizontalmente */
     border-radius: 10px;
-    /* Aumenta a curvatura das bordas */
     text-align: center;
     font-size: 2em;
-    /* Aumenta o tamanho da fonte */
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    /* Adiciona uma sombra para dar um efeito 3D */
 }
 
 .card-title {
@@ -29,12 +22,12 @@ body.modal-open {
 }
 
 .cards-list {
-    display: grid;
-    grid-template-columns: auto auto auto auto;
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    padding: 20px;
 }
 
 .card-group {
