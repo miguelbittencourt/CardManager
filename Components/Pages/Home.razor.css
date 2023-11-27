@@ -7,14 +7,10 @@
 .title {
     width: 80%;
     background-color: #474747;
-    /* Cor de fundo */
     color: white;
-    /* Cor do texto */
     padding: 10px;
-    /* Espaçamento interno */
     margin: 20px;
     border-radius: 5px;
-    /* Borda arredondada */
     text-align: center;
 }
 
