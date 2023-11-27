@@ -27,8 +27,8 @@ public class DialogService
 
     public void CloseDialog()
     {
+        Card = new();
         Type = EDialogType.None;
         ShowingDialog = false;
-        _navManager.Refresh(true);
     }
 }

@@ -27,7 +27,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Descrição</label>
-                    <InputText @bind-Value="@Model.Description" class="form-control" />
+                    <InputTextArea style="max-height: 150px" @bind-Value="@Model.Description" class="form-control" />
                     <span class="text-danger">
                         <ValidationMessage For="@(() => Model.Description)" />
                     </span>
@@ -97,5 +97,6 @@
     {
         await service.CreateAsync(Model);
         dialog.CloseDialog();
+        nav.Refresh(true);
     }
 }

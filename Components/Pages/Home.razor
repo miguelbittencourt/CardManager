@@ -43,7 +43,7 @@
                         break;
                 }
                 <div class="card-group">
-                    <div class="card-item m-3" style="background-image: url(@color)">
+                    <div class="card-item mt-1 mb-3" style="background-image: url(@color)">
                         <div class="card-header text-dark border border-dark rounded-top p-1 bg-body-secondary">
                             <span class="margin-h card-title">@card.Title</span>
                             <div class="mana-group margin-h">
@@ -55,11 +55,11 @@
                         <div class="card-image border border-dark" style="background-image: url('@imageUrl');"></div>
                         <div class="card-description border border-dark rounded-bottom bg-light p-2">
                             <p>@card.Description</p>
-                            <div class="card-stats">
-                                <span class="border border-dark bg-body-secondary p-1">
-                                    ⚔️ @card.Attack / 🛡️ @card.Defense / ❤️ @card.Health
-                                </span>
-                            </div>
+                        </div>
+                        <div class="card-stats">
+                            <span class="border border-dark bg-body-secondary p-1">
+                                ⚔️ @card.Attack / 🛡️ @card.Defense / ❤️ @card.Health
+                            </span>
                         </div>
                     </div>
                     <div class="p-3 border border-secondary rounded bg-secondary-subtle">
@@ -70,12 +70,12 @@
                     </div>
                 </div>
             }
-            </div>
+        </div>
     }
 </section>
 
 @if (dialog.ShowingDialog)
-{
+
     switch (dialog.Type)
     {
         case EDialogType.Criar:
@@ -88,7 +88,6 @@
             <DeleteDialog Id="dialog.Card.Id" OnCancel="dialog.CloseDialog" />
             break;
     }
-
 }
 
 @code {

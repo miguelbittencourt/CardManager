@@ -31,7 +31,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Descrição</label>
-                    <InputText @bind-Value="@Model.Description" class="form-control" />
+                    <InputTextArea style="max-height: 150px" @bind-Value="@Model.Description" class="form-control" />
                     <span class="text-danger">
                         <ValidationMessage For="@(() => Model.Description)" />
                     </span>
@@ -98,15 +98,14 @@
     [Parameter] public EventCallback OnCancel { get; set; }
     [Parameter] public int Id { get; set; }
     public Card Model { get; set; } = new();
-
     protected override async Task OnInitializedAsync()
     {
         Model = await service.GetByIdAsync(Id);
     }
-
     public async Task SaveAsync()
     {
         await service.UpdateAsync(Model);
         dialog.CloseDialog();
+        nav.Refresh(true);
     }
 }

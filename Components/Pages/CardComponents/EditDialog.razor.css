@@ -1,8 +1,0 @@
-.edit-form {
-    display: grid;
-    grid-template-columns: auto auto;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: start;
-    width: fit-content;
-}

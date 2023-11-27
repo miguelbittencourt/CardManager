@@ -31,5 +31,6 @@
     {
         await service.DeleteAsync(Id);
         dialog.CloseDialog();
+        nav.Refresh(true);
     }
 }
