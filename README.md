@@ -6,9 +6,7 @@ Para que o app funcione você precisa criar seu banco de dados com SQL Server, v
 "ConnectionStrings": { "SqlServerConnection": "Server=localhost;Database=SeuBancoDeDados;User Id=SeuUsuario(padrão=sa);Password=SuaSenha;Trusted_Connection=true;TrustServerCertificate=true" }
 
 Depois disso é necessário rodar as migrações e atualizações de banco de dados, voce pode usar o dotnet-ef para fazer tais coisas ou instalar o package Microsoft.EntityFrameworkCore.Tools para usar os comandos desse package para fazer as migrações e atualizar o banco de dados.
-<<<<<<< HEAD
-=======
 
 Lembre-se de rodar um dotnet build para criar os arquivos para execução do projeto, também para poder debugar o projeto caso queira
 Se for usar o vs code assim como usei e quiser debugar a aplicação é pertinente instalar a extensão C# DevKit que traz tudo que você precisa para executar e testar a aplicação
->>>>>>> 118b882b78697d62f029e73ca33ce230b2b747d1
+
